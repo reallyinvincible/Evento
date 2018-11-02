@@ -15,3 +15,6 @@ It’s also intended towards organisers of such events, who would like to speed 
 * Easy access to Important Event Information
 * Seamless Registrations just by scanning a QR Code.
 * Effortless transactions for refreshments, coffee, schwags and much more.
+
+**Hint : Scan this QR Code to get started or enter *ieee_techloop_congress* as the event id**
+![qr-code](https://user-images.githubusercontent.com/30470730/47918674-44e31a80-ded3-11e8-83ac-39ed6d9e038d.png)
