@@ -12,7 +12,6 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
         <service
             android:name=".classes.MyFirebaseInstanceIDService"
             android:exported="false">
@@ -20,11 +19,12 @@
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
         </service>
+        <service android:name=".widget.TimelineGridWidgetService"
+            android:permission="android.permission.BIND_REMOTEVIEWS"/>
 
         <meta-data
             android:name="com.google.firebase.messaging.default_notification_icon"
             android:resource="@drawable/circular_icon_evento" />
-
         <meta-data
             android:name="com.google.firebase.messaging.default_notification_color"
             android:resource="@color/colorAccent" />
@@ -58,9 +58,6 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".activities.OnboardingActivity"
-            android:theme="@style/Theme.Intro" />
-        <activity
             android:name=".activities.ZoomedImageActivity"
             android:configChanges="orientation"
             android:screenOrientation="portrait" />
@@ -69,6 +66,15 @@
             android:name="io.fabric.ApiKey"
             android:value="503520c94fba583d4772228dc072eb914a9feb32" />
 
+        <receiver android:name=".widget.EventoAppWidget">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/evento_app_widget_info" />
+        </receiver>
     </application>
 
 </manifest>

@@ -32,21 +32,10 @@ public class WelcomeActivity extends AppCompatActivity {
         findViewById(R.id.btn_next).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (!sharedPreferences.getBoolean("IsOnboarded", false)) {
-                    sharedPreferences.edit().putBoolean("IsOnboarded", true).apply();
-                    Intent intentOnboarding = new Intent(WelcomeActivity.this, OnboardingActivity.class);
-                    Intent intentQr = new Intent(WelcomeActivity.this, EventIDActivity.class);
-                    startActivities(new Intent[]{intentQr, intentOnboarding});
-                    customType(WelcomeActivity.this, "left-to-right");
-                    finishAfterTransition();
-                } else if(sharedPreferences.getBoolean("IsOnboarded", false) &&
-                        !sharedPreferences.getBoolean("InEvent", false)){
-                    Intent intent = new Intent(WelcomeActivity.this, EventIDActivity.class);
-                    startActivity(intent);
-                    customType(WelcomeActivity.this, "left-to-right");
-                    finishAfterTransition();
-                }
-
+                Intent intent = new Intent(WelcomeActivity.this, EventIDActivity.class);
+                startActivity(intent);
+                customType(WelcomeActivity.this, "left-to-right");
+                finishAfterTransition();
             }
         });
     }

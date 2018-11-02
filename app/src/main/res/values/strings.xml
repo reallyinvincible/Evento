@@ -38,5 +38,7 @@
     <string name="about_ieee_vit_title">About IEEE-VIT</string>
     <string name="licenses_text"><u>LICENSES</u></string>
     <string name="scan_qr_label">Proceed to Scan your QR Code</string>
+    <string name="appwidget_text">EXAMPLE</string>
+    <string name="add_widget">Add widget</string>
 
 </resources>

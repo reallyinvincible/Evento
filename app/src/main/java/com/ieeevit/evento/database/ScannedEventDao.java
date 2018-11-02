@@ -15,6 +15,9 @@ public interface ScannedEventDao {
     @Query("SELECT * FROM scanned_events")
     List<ScannedEvent> getAllEvent();
 
+    @Query("SELECT * FROM scanned_events WHERE event_id = :id")
+    List<ScannedEvent> getEventById(String id);
+
     @Insert
     void insertEvent(ScannedEvent scannedEvent);
 
