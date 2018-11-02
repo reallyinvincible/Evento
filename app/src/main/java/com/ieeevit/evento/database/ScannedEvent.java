@@ -2,14 +2,14 @@ package com.ieeevit.evento.database;
 
 import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;
+import android.arch.persistence.room.Ignore;
 import android.arch.persistence.room.PrimaryKey;
-import android.support.annotation.NonNull;
 
 @Entity(tableName = "scanned_events")
 public class ScannedEvent {
 
-    @PrimaryKey
-    @NonNull
+    @PrimaryKey(autoGenerate = true)
+    private int id;
     @ColumnInfo(name = "event_id")
     private String eventId;
     @ColumnInfo(name = "event_name")
@@ -17,10 +17,26 @@ public class ScannedEvent {
     @ColumnInfo(name = "hosting_organisation")
     private String hostingOrganisation;
 
+    @Ignore
     public ScannedEvent(String eventId, String eventName, String hostingOrganisation) {
         this.eventId = eventId;
         this.eventName = eventName;
         this.hostingOrganisation = hostingOrganisation;
+    }
+
+    public ScannedEvent(int id, String eventId, String eventName, String hostingOrganisation) {
+        this.id = id;
+        this.eventId = eventId;
+        this.eventName = eventName;
+        this.hostingOrganisation = hostingOrganisation;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getEventId() {

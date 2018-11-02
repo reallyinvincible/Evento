@@ -40,5 +40,7 @@
     <string name="scan_qr_label">Proceed to Scan your QR Code</string>
     <string name="appwidget_text">EXAMPLE</string>
     <string name="add_widget">Add widget</string>
+    <string name="event_timeline">Event Timeline</string>
+    <string name="suggestion_label">Enter a event to display it\'s Timeline</string>
 
 </resources>

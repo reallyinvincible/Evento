@@ -1,7 +1,9 @@
 package com.ieeevit.evento.activities;
 
 import android.Manifest;
+import android.appwidget.AppWidgetManager;
 import android.arch.persistence.room.Database;
+import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -33,6 +35,7 @@ import com.ieeevit.evento.database.ScannedEventsDatabase;
 import com.ieeevit.evento.networkAPIs.FetchAPI;
 import com.ieeevit.evento.networkmodels.EventModel;
 import com.ieeevit.evento.R;
+import com.ieeevit.evento.widget.EventoAppWidget;
 
 import java.io.IOException;
 import java.util.List;
@@ -192,6 +195,12 @@ public class EventIDActivity extends AppCompatActivity {
                     editor.putString("EventDetails", json);
                     editor.putBoolean("InEvent", true);
                     editor.apply();
+                    Intent intent = new Intent(getApplicationContext(), EventoAppWidget.class);
+                    intent.setAction(AppWidgetManager.ACTION_APPWIDGET_UPDATE);
+                    int[] ids = AppWidgetManager.getInstance(getApplication())
+                            .getAppWidgetIds(new ComponentName(getApplication(), EventoAppWidget.class));
+                    intent.putExtra(AppWidgetManager.EXTRA_APPWIDGET_IDS, ids);
+                    sendBroadcast(intent);
                     startActivity(new Intent(EventIDActivity.this, HomeActivity.class));
                     customType(EventIDActivity.this, "bottom-to-up");
                     finishAfterTransition();

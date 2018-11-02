@@ -1,5 +1,7 @@
 package com.ieeevit.evento.activities;
 
+import android.appwidget.AppWidgetManager;
+import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -25,6 +27,7 @@ import com.ieeevit.evento.fragments.ProfileFragment;
 import com.ieeevit.evento.fragments.ScannableFragment;
 import com.ieeevit.evento.fragments.TimelineFragment;
 import com.ieeevit.evento.R;
+import com.ieeevit.evento.widget.EventoAppWidget;
 
 import java.util.Objects;
 
@@ -156,8 +159,14 @@ public class HomeActivity extends AppCompatActivity {
         editor.remove("IsCoordinator");
         editor.remove("EventScannables");
         editor.apply();
-        Intent intent = new Intent(HomeActivity.this, EventIDActivity.class);
-        startActivity(intent);
+        Intent intent = new Intent(getApplicationContext(), EventoAppWidget.class);
+        intent.setAction(AppWidgetManager.ACTION_APPWIDGET_UPDATE);
+        int[] ids = AppWidgetManager.getInstance(getApplication())
+                .getAppWidgetIds(new ComponentName(getApplication(), EventoAppWidget.class));
+        intent.putExtra(AppWidgetManager.EXTRA_APPWIDGET_IDS, ids);
+        sendBroadcast(intent);
+        Intent intentEventId = new Intent(HomeActivity.this, EventIDActivity.class);
+        startActivity(intentEventId);
         customType(HomeActivity.this, "up-to-bottom");
         finishAfterTransition();
     }

@@ -5,7 +5,7 @@ import android.arch.persistence.room.Room;
 import android.arch.persistence.room.RoomDatabase;
 import android.content.Context;
 
-@Database(entities = {ScannedEvent.class}, version = 1, exportSchema = false)
+@Database(entities = {ScannedEvent.class}, version = 2, exportSchema = false)
 public abstract class ScannedEventsDatabase extends RoomDatabase{
 
     private static final String LOG_TAG = ScannedEventsDatabase.class.getSimpleName();
